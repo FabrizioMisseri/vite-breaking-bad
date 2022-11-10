@@ -21,11 +21,16 @@ export default {
   },
 
   created() {
-    axios.get("https://www.breakingbadapi.com/api/characters").then((resp) => {
-      this.store.arrayCharacters = resp.data;
-      console.log("qui", this.store.arrayCharacters);
-    });
-    this.store.flag = !this.store.flag;
+    setTimeout(() => {
+
+      axios.get("https://www.breakingbadapi.com/api/characters").then((resp) => {
+        this.store.arrayCharacters = resp.data;
+        console.log("qui", this.store.arrayCharacters);
+      });
+      this.store.flag = !this.store.flag;
+
+    }, 5000);
+
   },
 }
 </script>

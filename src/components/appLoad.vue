@@ -8,7 +8,7 @@ export default {
 
     <div>
 
-        LOADING
+        EUSTACHE's PC is LOADING
     </div>
 
 </template>
