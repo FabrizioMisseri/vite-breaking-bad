@@ -2,6 +2,10 @@
 export default {
     name: "cardMain",
 
+    props: {
+        person: Object,
+    },
+
     data() {
         return {
 
@@ -22,6 +26,8 @@ export default {
 .card {
     background-color: $primary-color;
     width: calc(100% / 5 - 20px);
+    margin-bottom: 1rem;
+    padding: .8rem;
     // debug
     color: white;
     height: 100px;

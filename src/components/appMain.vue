@@ -1,4 +1,5 @@
 <script>
+import { store } from "../store.js";
 import cardMain from './cardMain.vue';
 
 export default {
@@ -10,7 +11,7 @@ export default {
 
     data() {
         return {
-
+            store,
         }
     }
 }
@@ -24,11 +25,8 @@ export default {
     </div>
 
     <div class="box-cards d-flex justify-between">
-        <cardMain />
-        <cardMain />
-        <cardMain />
-        <cardMain />
-        <cardMain />
+
+        <cardMain v-for="(character, index) in store.arrayCharacters" :key="index" :person="character" />
 
     </div>
 

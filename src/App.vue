@@ -1,4 +1,6 @@
 <script>
+import axios from "axios";
+import { store } from "./store.js";
 import appMain from './components/appMain.vue';
 
 export default {
@@ -10,9 +12,16 @@ export default {
 
   data() {
     return {
-
+      store,
     }
   },
+
+  created() {
+    axios.get("https://www.breakingbadapi.com/api/characters").then((resp) => {
+      this.store.arrayCharacters = resp.data;
+      console.log("qui", this.store.arrayCharacters);
+    });
+  }
 }
 </script>
 
@@ -46,6 +55,7 @@ body {
   height: 70%;
   margin: 0 auto;
   background-color: white;
-  padding: 1.5rem
+  padding: 1.5rem;
+  overflow-y: auto;
 }
 </style>
