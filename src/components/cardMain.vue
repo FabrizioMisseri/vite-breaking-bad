@@ -16,7 +16,23 @@ export default {
 
 <template>
     <div class="card">
-        ciao
+        <div class="box-img">
+            <img :src="person.img" alt="">
+        </div>
+
+        <div class="box-txt">
+            <p class="name">
+                {{ person.name }}
+            </p>
+
+            <p class="series">
+                {{ person.category }}
+            </p>
+
+            <p class="life-status">
+                {{ person.status }}
+            </p>
+        </div>
     </div>
 </template>
 
@@ -28,8 +44,23 @@ export default {
     width: calc(100% / 5 - 20px);
     margin-bottom: 1rem;
     padding: .8rem;
-    // debug
-    color: white;
-    height: 100px;
+
+    .box-txt {
+        .name {
+            color: white;
+            font-weight: 600;
+        }
+
+        .series,
+        .life-status {
+            color: $gray-text-color;
+            font-size: .85rem;
+            font-size: 500;
+        }
+
+        p {
+            margin-top: .5rem;
+        }
+    }
 }
 </style>
