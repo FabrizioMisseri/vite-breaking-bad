@@ -21,5 +21,5 @@ export default {
 </template>
 
 <style lang="scss">
-@use "./general.scss" as *;
+@use "./styles/general.scss" as *;
 </style>
