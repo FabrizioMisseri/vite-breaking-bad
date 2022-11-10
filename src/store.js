@@ -4,4 +4,6 @@ export const store = reactive({
 
     arrayCharacters: [],
 
+    flag: false,
+
 });

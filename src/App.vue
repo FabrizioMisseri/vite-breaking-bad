@@ -3,6 +3,7 @@ import axios from "axios";
 import { store } from "./store.js";
 import appMain from './components/appMain.vue';
 import headerLogo from "./components/headerLogo.vue";
+import appLoad from "./components/appLoad.vue";
 
 export default {
   name: "AppVue",
@@ -10,6 +11,7 @@ export default {
   components: {
     appMain,
     headerLogo,
+    appLoad,
   },
 
   data() {
@@ -23,7 +25,8 @@ export default {
       this.store.arrayCharacters = resp.data;
       console.log("qui", this.store.arrayCharacters);
     });
-  }
+    this.store.flag = !this.store.flag;
+  },
 }
 </script>
 
@@ -33,7 +36,9 @@ export default {
 
     <div class="container">
 
-      <appMain />
+      <appMain v-if="store.flag" />
+      <appLoad v-else />
+
 
     </div>
   </div>
