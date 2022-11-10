@@ -2,12 +2,14 @@
 import axios from "axios";
 import { store } from "./store.js";
 import appMain from './components/appMain.vue';
+import headerLogo from "./components/headerLogo.vue";
 
 export default {
   name: "AppVue",
 
   components: {
     appMain,
+    headerLogo,
   },
 
   data() {
@@ -27,6 +29,8 @@ export default {
 
 <template>
   <div class="wrapper">
+    <headerLogo />
+
     <div class="container">
 
       <appMain />
@@ -48,6 +52,7 @@ body {
   height: 100vh;
   display: flex;
   align-items: flex-end;
+  position: relative;
 }
 
 .container {
