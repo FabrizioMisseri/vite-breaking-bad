@@ -20,7 +20,7 @@ export default {
 <template>
     <div class="box-header">
         <p>
-            Found X characters
+            Found {{ store.arrayCharacters.length }} characters
         </p>
     </div>
 
