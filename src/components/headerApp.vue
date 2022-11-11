@@ -1,6 +1,15 @@
 <script>
+import { store } from '../store.js';
+
 export default {
-    name: "header App"
+    name: "header App",
+
+    data() {
+        return {
+            store,
+            categories: ["Breaking Bad", "Better Call Saul"],
+        }
+    }
 }
 </script>
 
@@ -12,12 +21,9 @@ export default {
         </div>
 
         <div class="category-selector">
-            <select name="" id="">
-
+            <select v-model="store.selectSerie">
                 <option value="">empty</option>
-                <option value="">BB</option>
-                <option value="">BCS</option>
-
+                <option v-for="(category, index) in categories" :value="category" :key="index">{{ category }}</option>
             </select>
         </div>
 

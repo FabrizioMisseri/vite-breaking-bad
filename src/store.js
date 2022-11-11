@@ -4,6 +4,8 @@ export const store = reactive({
 
     arrayCharacters: [],
 
+    selectSerie: "",
+
     flag: false,
 
 });

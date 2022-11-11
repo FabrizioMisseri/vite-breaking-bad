@@ -29,9 +29,13 @@ export default {
       });
       this.store.flag = !this.store.flag;
 
-    }, 1000);
+    }, 2000);
 
   },
+
+  methods: {
+
+  }
 }
 </script>
 
@@ -39,6 +43,7 @@ export default {
   <div class="wrapper">
 
     <div class="container">
+
 
       <headerApp />
       <appMain v-if="store.flag" />
@@ -66,6 +71,5 @@ body {
   width: 70%;
   height: 70%;
   margin: 0 auto;
-  padding: 1.5rem;
 }
 </style>
