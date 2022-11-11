@@ -2,7 +2,7 @@
 import axios from "axios";
 import { store } from "./store.js";
 import appMain from './components/appMain.vue';
-import headerLogo from "./components/headerLogo.vue";
+import headerApp from "./components/headerApp.vue";
 import appLoad from "./components/appLoad.vue";
 
 export default {
@@ -10,7 +10,7 @@ export default {
 
   components: {
     appMain,
-    headerLogo,
+    headerApp,
     appLoad,
   },
 
@@ -29,7 +29,7 @@ export default {
       });
       this.store.flag = !this.store.flag;
 
-    }, 5000);
+    }, 1000);
 
   },
 }
@@ -37,10 +37,10 @@ export default {
 
 <template>
   <div class="wrapper">
-    <headerLogo />
 
     <div class="container">
 
+      <headerApp />
       <appMain v-if="store.flag" />
       <appLoad v-else />
 
@@ -59,18 +59,13 @@ body {
 
 .wrapper {
   width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  position: relative;
+  padding: 1.5rem;
 }
 
 .container {
   width: 70%;
   height: 70%;
   margin: 0 auto;
-  background-color: white;
   padding: 1.5rem;
-  overflow-y: auto;
 }
 </style>
