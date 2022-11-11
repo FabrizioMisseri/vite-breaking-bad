@@ -59,7 +59,7 @@ body {
 
 .wrapper {
   width: 100%;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .container {
