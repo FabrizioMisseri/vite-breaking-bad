@@ -6,6 +6,6 @@ export const store = reactive({
 
     selectSerie: "",
 
-    flag: false,
+    loaderFlag: "",
 
 });

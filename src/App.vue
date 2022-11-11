@@ -18,6 +18,8 @@ export default {
     return {
       store,
       apiUrl: "https://www.breakingbadapi.com/api/characters",
+      queryUrlSaul: "?category=Better+Call+Saul",
+      queryUrlBad: "?category=Breaking+Bad",
     }
   },
 
@@ -26,30 +28,28 @@ export default {
   },
 
   methods: {
-    greet() {
-      alert("ciao");
-    },
 
     callAxios() {
       if (this.store.selectSerie === "") {
-        axios.get("https://www.breakingbadapi.com/api/characters").then((resp) => {
+        this.store.loaderFlag = false;
+        axios.get(this.apiUrl).then((resp) => {
           this.store.arrayCharacters = resp.data;
-          console.log(this.store.arrayCharacters);
-          this.store.flag = true;
+          this.store.loaderFlag = true;
         });
 
       } else if (this.store.selectSerie === "Better Call Saul") {
-        axios.get("https://www.breakingbadapi.com/api/characters?category=Better+Call+Saul").then((resp) => {
+        this.store.loaderFlag = false;
+        axios.get(`${this.apiUrl}${this.queryUrlSaul}`).then((resp) => {
           this.store.arrayCharacters = resp.data;
-          this.store.flag = true;
+          this.store.loaderFlag = true;
         });
       } else if (this.store.selectSerie === "Breaking Bad") {
-        axios.get("https://www.breakingbadapi.com/api/characters?category=Breaking+Bad").then((resp) => {
+        this.store.loaderFlag = false;
+        axios.get(`${this.apiUrl}${this.queryUrlBad}`).then((resp) => {
           this.store.arrayCharacters = resp.data;
-          this.store.flag = true;
+          this.store.loaderFlag = true;
         });
       }
-
     },
 
   },
@@ -63,7 +63,7 @@ export default {
 
 
       <headerApp @choice="callAxios()" />
-      <appMain v-if="store.flag" />
+      <appMain v-if="store.loaderFlag" />
       <appLoad v-else />
 
 
