@@ -17,27 +17,41 @@ export default {
   data() {
     return {
       store,
+      apiUrl: "https://www.breakingbadapi.com/api/characters",
     }
   },
 
   created() {
-    setTimeout(() => {
-
-      axios.get("https://www.breakingbadapi.com/api/characters").then((resp) => {
-        this.store.arrayCharacters = resp.data;
-        console.log("qui", this.store.arrayCharacters);
-      });
-      this.store.flag = !this.store.flag;
-
-    }, 2000);
-
+    this.callAxios();
   },
 
   methods: {
     greet() {
       alert("ciao");
-    }
-  }
+    },
+
+    callAxios() {
+      if (this.store.selectSerie === "") {
+        axios.get(this.apiUrl).then((resp) => {
+          this.store.arrayCharacters = resp.data;
+          this.store.flag = !this.store.flag;
+        });
+
+      } else if (this.store.selectSerie === "Better Call Saul") {
+        axios.get(`${this.apiUrl}?category=Better+Call+Saul`).then((resp) => {
+          this.store.arrayCharacters = resp.data;
+          this.store.flag = !this.store.flag;
+        });
+      } else {
+        axios.get(`${this.apiUrl}?category=Breaking+Bad`).then((resp) => {
+          this.store.arrayCharacters = resp.data;
+          this.store.flag = !this.store.flag;
+        });
+      }
+
+    },
+
+  },
 }
 </script>
 
@@ -47,7 +61,7 @@ export default {
     <div class="container">
 
 
-      <headerApp @choice="greet()" />
+      <headerApp @choice="callAxios()" />
       <appMain v-if="store.flag" />
       <appLoad v-else />
 
