@@ -21,7 +21,7 @@ export default {
         </div>
 
         <div class="category-selector">
-            <select v-model="store.selectSerie">
+            <select v-model="store.selectSerie" @change="$emit('choice')">
                 <option value="">empty</option>
                 <option v-for="(category, index) in categories" :value="category" :key="index">{{ category }}</option>
             </select>

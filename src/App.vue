@@ -34,7 +34,9 @@ export default {
   },
 
   methods: {
-
+    greet() {
+      alert("ciao");
+    }
   }
 }
 </script>
@@ -45,7 +47,7 @@ export default {
     <div class="container">
 
 
-      <headerApp />
+      <headerApp @choice="greet()" />
       <appMain v-if="store.flag" />
       <appLoad v-else />
 
