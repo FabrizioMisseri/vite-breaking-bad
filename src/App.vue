@@ -32,20 +32,21 @@ export default {
 
     callAxios() {
       if (this.store.selectSerie === "") {
-        axios.get(this.apiUrl).then((resp) => {
+        axios.get("https://www.breakingbadapi.com/api/characters").then((resp) => {
           this.store.arrayCharacters = resp.data;
-          this.store.flag = !this.store.flag;
+          console.log(this.store.arrayCharacters);
+          this.store.flag = true;
         });
 
       } else if (this.store.selectSerie === "Better Call Saul") {
-        axios.get(`${this.apiUrl}?category=Better+Call+Saul`).then((resp) => {
+        axios.get("https://www.breakingbadapi.com/api/characters?category=Better+Call+Saul").then((resp) => {
           this.store.arrayCharacters = resp.data;
-          this.store.flag = !this.store.flag;
+          this.store.flag = true;
         });
-      } else {
-        axios.get(`${this.apiUrl}?category=Breaking+Bad`).then((resp) => {
+      } else if (this.store.selectSerie === "Breaking Bad") {
+        axios.get("https://www.breakingbadapi.com/api/characters?category=Breaking+Bad").then((resp) => {
           this.store.arrayCharacters = resp.data;
-          this.store.flag = !this.store.flag;
+          this.store.flag = true;
         });
       }
 
