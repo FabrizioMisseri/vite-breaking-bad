@@ -30,21 +30,20 @@ export default {
   methods: {
 
     callAxios() {
+      this.store.loaderFlag = false;
+
       if (this.store.selectSerie === "") {
-        this.store.loaderFlag = false;
         axios.get(this.apiUrl).then((resp) => {
           this.store.arrayCharacters = resp.data;
           this.store.loaderFlag = true;
         });
 
       } else if (this.store.selectSerie === "Better Call Saul") {
-        this.store.loaderFlag = false;
         axios.get(`${this.apiUrl}${this.queryUrlSaul}`).then((resp) => {
           this.store.arrayCharacters = resp.data;
           this.store.loaderFlag = true;
         });
       } else if (this.store.selectSerie === "Breaking Bad") {
-        this.store.loaderFlag = false;
         axios.get(`${this.apiUrl}${this.queryUrlBad}`).then((resp) => {
           this.store.arrayCharacters = resp.data;
           this.store.loaderFlag = true;
