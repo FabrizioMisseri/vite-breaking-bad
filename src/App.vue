@@ -34,22 +34,24 @@ export default {
 
       if (this.store.selectSerie === "") {
         axios.get(this.apiUrl).then((resp) => {
-          this.store.arrayCharacters = resp.data;
-          this.store.loaderFlag = true;
+          this.saveRespSwitchFlag(resp);
         });
 
       } else if (this.store.selectSerie === "Better Call Saul") {
         axios.get(`${this.apiUrl}${this.queryUrlSaul}`).then((resp) => {
-          this.store.arrayCharacters = resp.data;
-          this.store.loaderFlag = true;
+          this.saveRespSwitchFlag(resp);
         });
       } else if (this.store.selectSerie === "Breaking Bad") {
         axios.get(`${this.apiUrl}${this.queryUrlBad}`).then((resp) => {
-          this.store.arrayCharacters = resp.data;
-          this.store.loaderFlag = true;
+          this.saveRespSwitchFlag(resp);
         });
       }
     },
+
+    saveRespSwitchFlag(resp) {
+      this.store.arrayCharacters = resp.data;
+      this.store.loaderFlag = true;
+    }
 
   },
 }
